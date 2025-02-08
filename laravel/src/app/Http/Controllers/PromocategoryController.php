@@ -12,7 +12,8 @@ class PromocategoryController extends Controller
      */
     public function index()
     {
-        //
+        $promocategory = Promocategory::get();
+        return response()->json($promocategory);
     }
 
     /**
@@ -28,7 +29,9 @@ class PromocategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $promo = Promocategory::create($data);
+        return response()->json($data);
     }
 
     /**
