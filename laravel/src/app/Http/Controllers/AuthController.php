@@ -31,4 +31,10 @@ class AuthController extends Controller
     {
         return view('user.login');
     }
+
+    public function loginPost(Request $request)
+    {
+        $data = $request->all();
+        dd($data);
+    }
 }

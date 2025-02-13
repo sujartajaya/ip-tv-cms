@@ -14,8 +14,11 @@ Route::get('/', function () {
     // return response()->json($data,200);
 });
 
-Route::get('/channels',[TvController::class,'index']);
 Route::get('/register', [AuthController::class, 'registration'])->name('register');
 Route::post('/register', [AuthController::class, 'registerPost'])->name('register');
 Route::get('/login',[AuthController::class,'login'])->name('login');
 Route::post('/login',[AuthController::class,'loginPost'])->name('login');
+
+Route::middleware('auth')->prefix('/')->group(function () {
+    Route::get('/channels',[TvController::class,'index']);
+});
