@@ -9,6 +9,14 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+
+    public function index()
+    {
+        if (Auth::check()) {
+            return redirect(route('dashboard'));
+        } else return redirect(route('login'));
+    }
+
     public function registration()
     {
         return view('user.register');
@@ -24,7 +32,7 @@ class AuthController extends Controller
         ]);
         $credentials['password'] = bcrypt($credentials['password']);
         $user = User::create($credentials);
-        return dd($user);
+        return redirect(route('login'));
     }
 
     public function login()
@@ -34,7 +42,16 @@ class AuthController extends Controller
 
     public function loginPost(Request $request)
     {
-        $data = $request->all();
-        dd($data);
+        $credentials = $request->validate([
+            'username' => ['required'],
+            'password' => ['required'],
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('/');
+        }
+
+         return back()->with('loginError','Login Failed!');
     }
 }
