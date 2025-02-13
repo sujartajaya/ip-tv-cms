@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('channels', function (Blueprint $table) {
+        Schema::create('tvchannels', function (Blueprint $table) {
             $table->id();
-            $table->string('channel');
-            $table->string('ipstream');
-            $table->string('logo')->nullable();
             $table->string('desc')->nullable();
+            $table->foreignId('chcategory_id')->constrained()->on('chcategories')->onDelete('cascade');
+            $table->foreignId('channel_id')->constrained()->on('channels')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('channels');
+        Schema::dropIfExists('tvchannels');
     }
 };
