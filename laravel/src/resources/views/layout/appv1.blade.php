@@ -25,6 +25,7 @@
                 <li><a href="{{ route('home') }}" class="text-white hover:text-gray-200">Home</a></li>
                 <li><a href="#" class="text-white hover:text-gray-200">About</a></li>
                 @if(Auth::check())
+                    <li><a href="{{ route('dashboard') }}" class="text-white block">Dashboard</a></li>
                     <form id="logout-form" action="/logout" method="POST" class="d-none">@csrf</form>
                     <li>
                         <a href="#" class="text-white block" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
@@ -39,7 +40,17 @@
         <ul id="mobile-menu" class="md:hidden hidden bg-blue-700 p-4 space-y-2">
             <li><a href="{{ route('home') }}" class="text-white block">Home</a></li>
             <li><a href="#" class="text-white block">About</a></li>
-            <li><a href="{{ route('login') }}" class="text-white block">Login</a></li>
+            @if(Auth::check())
+                    <li><a href="{{ route('dashboard') }}" class="text-white block">Dashboard</a></li>
+                    <form id="logout-form" action="/logout" method="POST" class="d-none">@csrf</form>
+                    <li>
+                        <a href="#" class="text-white block" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
+                    </li>
+                @else
+                    <li>
+                        <a href="{{ route('login') }}" class="text-white block">Login</a>
+                    </li>
+                @endif
         </ul>
     </nav>
     <main class="flex-grow container mx-auto text-center py-20 justify-center">
