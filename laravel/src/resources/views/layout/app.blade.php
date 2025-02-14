@@ -40,5 +40,10 @@
 <main class="flex py-4 mx-2">
     @yield('content')
 </main>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+     const menu = document.querySelectorAll('.navbar-default');
+  });
+</script>
 </body>
 </html>

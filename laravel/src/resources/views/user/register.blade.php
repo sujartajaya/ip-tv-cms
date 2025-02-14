@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layout.appv1')
     @section('content')
         <!-- component -->
         <div class="container mx-auto py-8">

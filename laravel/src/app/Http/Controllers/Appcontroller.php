@@ -2,19 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tv;
 use Illuminate\Http\Request;
 
-class TvController extends Controller
+class Appcontroller extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $tv = Tv::get();
-
-        return view('user.register');
+        return view('app.home');
     }
 
     /**
@@ -30,15 +27,13 @@ class TvController extends Controller
      */
     public function store(Request $request)
     {
-        $datatv = $request->all();
-        $tv = Tv::create($datatv);
-        return $tv;
+        //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Tv $tv)
+    public function show(string $id)
     {
         //
     }
@@ -46,7 +41,7 @@ class TvController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Tv $tv)
+    public function edit(string $id)
     {
         //
     }
@@ -54,7 +49,7 @@ class TvController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Tv $tv)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -62,14 +57,8 @@ class TvController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Tv $tv)
+    public function destroy(string $id)
     {
         //
     }
-
-    public function dashboard()
-    {
-        return view('tv.dashboard');
-    }
-    
 }

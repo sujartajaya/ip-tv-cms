@@ -14,7 +14,7 @@ class AuthController extends Controller
     {
         if (Auth::check()) {
             return redirect(route('dashboard'));
-        } else return redirect(route('login'));
+        } else return redirect(route('home'));
     }
 
     public function registration()
@@ -43,7 +43,7 @@ class AuthController extends Controller
     public function loginPost(Request $request)
     {
         $credentials = $request->validate([
-            'username' => ['required'],
+            'email' => ['required'],
             'password' => ['required'],
         ]);
 
@@ -54,4 +54,11 @@ class AuthController extends Controller
 
          return back()->with('loginError','Login Failed!');
     }
+
+    public function logoutPost()
+    {
+        Auth::logout();
+        return redirect('/');
+    }
+
 }
