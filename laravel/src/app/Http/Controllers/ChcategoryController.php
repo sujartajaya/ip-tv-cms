@@ -45,9 +45,10 @@ class ChcategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Chcategory $chcategory)
+    public function edit(Chcategory $chcategory, $id)
     {
-        //
+        $chcat = $chcategory->where('id',$id)->first();
+        return response()->json($chcat);
     }
 
     /**

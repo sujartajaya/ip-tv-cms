@@ -16,6 +16,7 @@ Route::get('/home',[Appcontroller::class,'index'])->name('home');
 
 Route::middleware('auth')->prefix('/')->group(function () {
     Route::get('/chcategory',[ChcategoryController::class,'index'])->name('chcategory');
+    Route::get('/chcategory/{id}',[ChcategoryController::class,'edit'])->name('idchcategory');
     Route::get('/channels',[TvController::class,'index']);
     Route::post('/logout',[AuthController::class,'logoutPost'])->name('logout');
     Route::get('/dashboard',[TvController::class,'dashboard'])->name('dashboard');
