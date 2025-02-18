@@ -2,31 +2,35 @@
     @section('content')
         <h1 class="text-3xl font-bold text-blue-600 text-center">Dashboard</h1>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-            <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="bg-white rounded-xl shadow-md overflow-hidden p-4">
                 <h2 class="text-xl font-bold text-gray-700">Channel Category</h2>
-                <p class="text-gray-600 mt-2">This is some content inside the first card.</p>
+                <div class="p-4">
+                    <a href="{{ route('chcategory') }}" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Lihat Detail</a>
+                </div>
             </div>
-            <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="bg-white rounded-xl shadow-md overflow-hidden p-4">
                 <h2 class="text-xl font-bold text-gray-700">Tv Channel</h2>
-                <p class="text-gray-600 mt-2">This is some content inside the second card.</p>
+                <div class="p-4">
+                    <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Lihat Detail</button>
+                </div>
             </div>
-            <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="bg-white rounded-xl shadow-md overflow-hidden p-4">
                 <h2 class="text-xl font-bold text-gray-700">Food Category</h2>
-                <p class="text-gray-600 mt-2">This is some content inside the third card.
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam eum ipsum libero, voluptate optio voluptatum perspiciatis veritatis autem tenetur itaque accusamus minima illo quisquam praesentium suscipit id dolor nemo placeat?
-                </p>
+                <div class="p-4">
+                    <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Lihat Detail</button>
+                </div>
             </div>
-            <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="bg-white rounded-xl shadow-md overflow-hidden p-4">
                 <h2 class="text-xl font-bold text-gray-700">Food</h2>
-                <p class="text-gray-600 mt-2">This is some content inside the third card.
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam eum ipsum libero, voluptate optio voluptatum perspiciatis veritatis autem tenetur itaque accusamus minima illo quisquam praesentium suscipit id dolor nemo placeat?
-                </p>
+                <div class="p-4">
+                    <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Lihat Detail</button>
+                </div>
             </div>
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h2 class="text-xl font-bold text-gray-700">Promo</h2>
-                <p class="text-gray-600 mt-2">This is some content inside the third card.
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam eum ipsum libero, voluptate optio voluptatum perspiciatis veritatis autem tenetur itaque accusamus minima illo quisquam praesentium suscipit id dolor nemo placeat?
-                </p>
+            <div class="bg-white rounded-xl shadow-md overflow-hidden p-4">
+                <h2 class="text-xl font-bold text-gray-700">Hotel promo</h2>
+                <div class="p-4">
+                    <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Lihat Detail</button>
+                </div>
             </div>
         </div>
     @endsection

@@ -1,7 +1,7 @@
 services:
   mysql:
     image: mysql:8.0
-    container_name: mysql-container-01
+    container_name: mysql-container-iptv
     #  working_dir: /home
     volumes:
       #    - ./mysql/dbconfig:/home
@@ -34,10 +34,10 @@ services:
 
   phpmyadmin:
     image: phpmyadmin
-    container_name: my-phpmyadmin-container-01
+    container_name: my-phpmyadmin-container-iptv
     restart: always
     ports:
-      - 8080:80
+      - 9080:80
     environment:
       - PMA_HOST=mysql
       - TZ=Asia/Makassar
@@ -62,7 +62,7 @@ services:
       context: ./php
       dockerfile: Dockerfile
     image: my-php-image-01
-    container_name: my-php-container-01
+    container_name: my-php-container-iptv
     restart: unless-stopped
     working_dir: /var/www/
     environment:
@@ -81,12 +81,12 @@ services:
 
   nginx:
     image: nginx:alpine
-    container_name: my-nginx-container-01
+    container_name: my-nginx-container-iptv
     restart: unless-stopped
     environment:
       - TZ=Asia/Makassar
     ports:
-      - 8000:80
+      - 9000:80
     volumes:
       - ./laravel/src:/var/www
       - ./nginx:/etc/nginx/conf.d/

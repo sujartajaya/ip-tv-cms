@@ -13,7 +13,7 @@ class ChcategoryController extends Controller
     public function index()
     {
         $chcategory = Chcategory::get();
-        return response()->json($chcategory,200);
+        return view('tv.chcategory',compact('chcategory'));
     }
 
     /**
