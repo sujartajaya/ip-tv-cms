@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Chcategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ChcategoryController extends Controller
 {
@@ -54,9 +55,25 @@ class ChcategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Chcategory $chcategory)
+    public function update(Request $request, Chcategory $chcategory, $id)
     {
-        //
+        $category = $chcategory->find($id);
+        $validator=[];
+        $validator = Validator::make($request->all(), [
+            'category' => ['required'],
+            'desc' => ['required']
+        ]);
+        $data = [];
+        if($validator->fails()){
+            $data['error'] = true;
+            $data['msg'] = $validator->messages();
+            return response()->json($request->all(), 200);
+        } else {
+            $data['error'] = false;
+            $category->update($request->all());
+            $data['msg'] = $request->all();
+            return response()->json($data, 200);
+        }
     }
 
     /**

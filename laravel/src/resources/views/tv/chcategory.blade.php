@@ -1,4 +1,7 @@
 @extends('layout.appv1')
+    @section('addscript')
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    @endsection
     @section('content')
     <div class="max-w-[720px] mx-auto">
         <div class="flex flex-col items-center justify-center px-3 py-8 mx-auto lg:py-0 mt-1">
@@ -67,7 +70,7 @@
                 
             <div class="flex justify-end space-x-2">
                 <button class="px-4 py-2 bg-gray-300 rounded" onclick="closeModal()">Cancel</button>
-                <button class="px-4 py-2 bg-blue-500 text-white rounded">Save</button>
+                <button class="px-4 py-2 bg-blue-500 text-white rounded" id="save">Save</button>
             </div>
         </div>
     </div>
@@ -85,9 +88,37 @@
                 .catch(error => {
                     console.log('Terjadi kesalahan: ' + error);
                 });
+            document.getElementById('save').addEventListener("click", async function(event) {
+                event.preventDefault();
+                const category = await document.getElementById('category');
+                const desc = await document.getElementById('desc');
+                const data = {
+                    "category": await category.value,
+                    "desc": await desc.value
+                };
+                try {
+                    // const response = await fetch(url, {
+                    //     method: "PATCH",
+                    //     headers: {
+                    //         "Content-Type": "multipart/form-data"
+                    //     },
+                    //     body: data
+                    // });
+
+                    // const result = await response.json();
+                    // console.log("Data berhasil diperbarui: " + JSON.stringify(result, null, 2));
+                    await axios
+                            .post(url,data,{headers:{'Content-Type':'multipart/form-data'}})
+                            .then((response) =>{ console.log(response.data); document.getElementById('modal').classList.add('hidden'); location.reload();})
+                } catch (error) {
+                    console.log("Terjadi kesalahan: " + error+"\n"+data);
+                }
+                });
         }
         function closeModal() {
             document.getElementById('modal').classList.add('hidden');
         }
+
+        
     </script>
     @endsection
